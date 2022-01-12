@@ -50,8 +50,12 @@ public DiaryRepository(MyDBContext dbContext) : base(dbContext)
 { 
 } 
 ```
-
-## Step 7. Add Mapping -> Service -> Dxos -> Interface 
+  
+## Step 7.  Add Service to Startup.cs 
+```
+services.AddScoped<IDiaryRepository, DiaryRepository>(); 
+```
+## Step 8. Add Mapping -> Service -> Dxos -> Interface 
 
 ```
 DiaryDto MapDiaryDto(Diary diary); 
@@ -59,7 +63,7 @@ DiaryDto MapDiaryDto(Diary diary);
 List<DiaryDto> MapDiaryDto(List<Diary> diary); 
 ```
 
-## Step 8. Add Mapping -> Service -> Dxos -> Implementation 
+## Step 9. Add Mapping -> Service -> Dxos -> Implementation 
 ```
 cfg.CreateMap<Diary, DiaryDto>() 
 
@@ -94,9 +98,4 @@ public List<DiaryDto> MapDiaryDto(List<Domain.Models.Diary> diary)
 { 
    return _mapper.Map<List<Domain.Models.Diary>, List<Domain.Dtos.DiaryDto>>(diary); 
 } 
-```
-
-## Step 9.  Add Service to Startup.cs 
-```
-services.AddScoped<IDiaryRepository, DiaryRepository>(); 
 ```
