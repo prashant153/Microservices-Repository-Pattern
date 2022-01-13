@@ -46,9 +46,12 @@ public interface IDiaryRepository: IRepository<Diary>
 
 ## Step 6. Create Repository file -> Data -> Repositories 
 ```
-public DiaryRepository(MyDBContext dbContext) : base(dbContext) 
-{ 
-} 
+public class DiaryRepository : Repository<Diary>, IDiaryRepository
+    {
+        public DiaryRepository(MyDBContext dbContext) : base(dbContext) 
+        { 
+        }
+    } 
 ```
   
 ## Step 7.  Add Service to Startup.cs 
